@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Protel.Core": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
