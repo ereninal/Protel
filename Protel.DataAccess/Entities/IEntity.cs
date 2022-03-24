@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Protel.DataAccess.Entities
 {
-    public interface IEntitiy
+    public interface IEntity
     {
     }
 }

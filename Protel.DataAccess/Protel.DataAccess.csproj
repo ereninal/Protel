@@ -7,8 +7,6 @@
   <ItemGroup>
     <Folder Include="Cache\Microsoft\" />
     <Folder Include="DTO\" />
-    <Folder Include="Base\" />
-    <Folder Include="Interface\" />
   </ItemGroup>
 
   <ItemGroup>
