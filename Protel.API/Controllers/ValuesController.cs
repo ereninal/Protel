@@ -1,7 +1,9 @@
 ﻿using AutoWrapper.Wrappers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Protel.Business.Interface;
 using Protel.Core.Security;
+using Protel.DataAccess.Repository.Interface;
 using Protel.Service.TCMB.Interface;
 using Protel.Service.TCMB.Model.Response;
 using System;
@@ -15,10 +17,13 @@ namespace Protel.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly ITCMBService ITCMBService;
-        public ValuesController(ITCMBService _ITCMBService)
+        private readonly ICurrencyTypeBusiness ICurrencyTypeBusiness;
+        private readonly ICurrencyInfoBusiness ICurrencyInfoBusiness;
+
+        public ValuesController(ICurrencyTypeBusiness _ICurrencyTypeBusiness, ICurrencyInfoBusiness _ICurrencyInfoBusiness)
         {
-            ITCMBService = _ITCMBService;
+            ICurrencyTypeBusiness = _ICurrencyTypeBusiness;
+            ICurrencyInfoBusiness = _ICurrencyInfoBusiness;
         }
         [HttpPost("GetEncrypt")]
         public string GetEncrypt(string param)
@@ -30,10 +35,15 @@ namespace Protel.API.Controllers
         {
             return param.Decrypt();
         }
-        [HttpPost("GetInfo")]
-        public async Task<ApiResponse> GetInfo(string param)
+        [HttpPost("AddCurrencyTypes")]
+        public async Task<ApiResponse> AddCurrencyTypes()
         {
-            return await ITCMBService.GetDailyCurrencyInfos();
+            return await ICurrencyTypeBusiness.AddRange();
+        }
+        [HttpPost("DailyCurrencyInfo")]
+        public async Task<ApiResponse> DailyCurrencyInfo()
+        {
+            return await ICurrencyInfoBusiness.AddRangeByDaily();
         }
     }
 }

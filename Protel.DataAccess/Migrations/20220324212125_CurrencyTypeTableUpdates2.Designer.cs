@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Protel.DataAccess.Context;
@@ -9,9 +10,10 @@ using Protel.DataAccess.Context;
 namespace Protel.DataAccess.Migrations
 {
     [DbContext(typeof(ProtelContext))]
-    partial class ProtelContextModelSnapshot : ModelSnapshot
+    [Migration("20220324212125_CurrencyTypeTableUpdates2")]
+    partial class CurrencyTypeTableUpdates2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,22 +63,13 @@ namespace Protel.DataAccess.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<decimal>("BanknoteBuying")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("BanknoteSelling")
-                        .HasColumnType("numeric");
-
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<long>("CurrencyTypeId")
                         .HasColumnType("bigint");
 
-                    b.Property<decimal>("ForexBuying")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("ForexSelling")
+                    b.Property<decimal>("CurrentRate")
                         .HasColumnType("numeric");
 
                     b.Property<bool>("IsDeleted")

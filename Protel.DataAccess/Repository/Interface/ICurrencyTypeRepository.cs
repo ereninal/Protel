@@ -1,4 +1,5 @@
-﻿using Protel.DataAccess.Entities;
+﻿using Protel.DataAccess.DTO.Response;
+using Protel.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Protel.DataAccess.Repository.Interface
 {
     public interface ICurrencyTypeRepository : IRepository<CurrencyType>
     {
+        List<DtoCurrencyInfoResponse> GetDtoCurrencyInfo();
     }
 }

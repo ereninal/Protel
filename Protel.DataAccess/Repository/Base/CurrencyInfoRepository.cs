@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Protel.DataAccess.Repository.Base
 {
-    public class CurrencyInfoRepository : BaseRepository<CurrencyType, ProtelContext>, ICurrencyInfoRepository
+    public class CurrencyInfoRepository : BaseRepository<CurrencyInfo, ProtelContext>, ICurrencyInfoRepository
     {
     }
 }

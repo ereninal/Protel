@@ -10,8 +10,11 @@ namespace Protel.DataAccess.Entities
 {
     public class CurrencyInfo : BaseEntitiy,IEntity
     {
-        public int CurrencyTypeId { get; set; }
-        public decimal CurrentRate { get; set; }
+        public Int64 CurrencyTypeId { get; set; }
+        public decimal ForexBuying { get; set; }
+        public decimal ForexSelling { get; set; }
+        public decimal BanknoteBuying { get; set; }
+        public decimal BanknoteSelling { get; set; }
         public virtual CurrencyType CurrencyType { get; set; }
 
     }
