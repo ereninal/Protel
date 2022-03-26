@@ -10,9 +10,9 @@ namespace Protel.DataAccess.Entities
 {
     public class CurrencyChangeInfo : BaseEntitiy, IEntity
     {
-        public int CurrencyTypeId { get; set; }
+        public Int64 CurrencyTypeId { get; set; }
         public decimal CurrentRate { get; set; }
-        public double Change { get; set; }
+        public string Change { get; set; }
         public virtual CurrencyType CurrencyType { get; set; }
         public class CurrencyInfoEntityConfiguration : IEntityTypeConfiguration<CurrencyChangeInfo>
         {

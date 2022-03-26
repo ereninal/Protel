@@ -20,5 +20,6 @@ namespace Protel.DataAccess.Context
         public DbSet<CurrencyType> Currencies { get; set; }
         public DbSet<CurrencyInfo> CurrencyInfo { get; set; }
         public DbSet<CurrencyChangeInfo> CurrencyChangeInfos { get; set; }
+        public DbSet<WorkWithCurrency> WorkWithCurrencies { get; set; }
     }
 }

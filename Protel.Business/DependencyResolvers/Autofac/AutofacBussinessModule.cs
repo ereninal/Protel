@@ -28,6 +28,11 @@ namespace Protel.Business.DependencyResolvers.Autofac
             builder.RegisterType<CurrencyInfoRepository>().As<ICurrencyInfoRepository>().SingleInstance();
             builder.RegisterType<CurrencyInfoBusiness>().As<ICurrencyInfoBusiness>().SingleInstance();
 
+            builder.RegisterType<WorkWithCurrencyRepository>().As<IWorkWithCurrencyRepository>().SingleInstance();
+            builder.RegisterType<WorkWithCurrencyBusiness>().As<IWorkWithCurrencyBusiness>().SingleInstance();
+
+            builder.RegisterType<CurrencyChangeInfoRepository>().As<ICurrencyChangeInfoRepository>().SingleInstance();
+
         }
     }
 }

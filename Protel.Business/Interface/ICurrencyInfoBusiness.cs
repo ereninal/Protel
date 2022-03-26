@@ -9,6 +9,8 @@ namespace Protel.Business.Interface
 {
     public interface ICurrencyInfoBusiness
     {
-        Task<ApiResponse> AddRangeByDaily();
+        Task<ApiResponse> GetCurrencyInfos();
+        Task<ApiResponse> GetChangeByCurrency(string code);
+        Task<ApiResponse> GetList();
     }
 }

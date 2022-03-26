@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Protel.DataAccess.Context;
@@ -9,9 +10,10 @@ using Protel.DataAccess.Context;
 namespace Protel.DataAccess.Migrations
 {
     [DbContext(typeof(ProtelContext))]
-    partial class ProtelContextModelSnapshot : ModelSnapshot
+    [Migration("20220325182407_WorkWirhCurrencyTableIsAdded")]
+    partial class WorkWirhCurrencyTableIsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,13 +28,16 @@ namespace Protel.DataAccess.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Change")
-                        .HasColumnType("text");
+                    b.Property<double>("Change")
+                        .HasColumnType("double precision");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long>("CurrencyTypeId")
+                    b.Property<int>("CurrencyTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<long?>("CurrencyTypeId1")
                         .HasColumnType("bigint");
 
                     b.Property<decimal>("CurrentRate")
@@ -46,7 +51,7 @@ namespace Protel.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CurrencyTypeId");
+                    b.HasIndex("CurrencyTypeId1");
 
                     b.ToTable("CurrencyChangeInfos");
                 });
@@ -153,9 +158,7 @@ namespace Protel.DataAccess.Migrations
                 {
                     b.HasOne("Protel.DataAccess.Entities.CurrencyType", "CurrencyType")
                         .WithMany("CurrencyChangeInfos")
-                        .HasForeignKey("CurrencyTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CurrencyTypeId1");
 
                     b.Navigation("CurrencyType");
                 });

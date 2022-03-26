@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Protel.Business.Interface;
 using Protel.Core.Security;
+using Protel.DataAccess.Entities;
 using Protel.DataAccess.Repository.Interface;
 using Protel.Service.TCMB.Interface;
 using Protel.Service.TCMB.Model.Response;
@@ -15,15 +16,17 @@ namespace Protel.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class TaskController : ControllerBase
     {
         private readonly ICurrencyTypeBusiness ICurrencyTypeBusiness;
         private readonly ICurrencyInfoBusiness ICurrencyInfoBusiness;
+        private readonly IWorkWithCurrencyBusiness IWorkWithCurrencyBusiness;
 
-        public ValuesController(ICurrencyTypeBusiness _ICurrencyTypeBusiness, ICurrencyInfoBusiness _ICurrencyInfoBusiness)
+        public TaskController(ICurrencyTypeBusiness _ICurrencyTypeBusiness, ICurrencyInfoBusiness _ICurrencyInfoBusiness, IWorkWithCurrencyBusiness _IWorkWithCurrencyBusiness)
         {
             ICurrencyTypeBusiness = _ICurrencyTypeBusiness;
             ICurrencyInfoBusiness = _ICurrencyInfoBusiness;
+            IWorkWithCurrencyBusiness = _IWorkWithCurrencyBusiness;
         }
         [HttpPost("GetEncrypt")]
         public string GetEncrypt(string param)
@@ -40,10 +43,11 @@ namespace Protel.API.Controllers
         {
             return await ICurrencyTypeBusiness.AddRange();
         }
-        [HttpPost("DailyCurrencyInfo")]
-        public async Task<ApiResponse> DailyCurrencyInfo()
+        
+        [HttpPost("TaskWorkWithCurrencies")]
+        public async Task<ApiResponse> TaskWorkWithCurrencies()
         {
-            return await ICurrencyInfoBusiness.AddRangeByDaily();
+            return await IWorkWithCurrencyBusiness.AddRangeWithSelectCurrencies();
         }
     }
 }
