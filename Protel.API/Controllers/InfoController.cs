@@ -17,7 +17,7 @@ namespace Protel.API.Controllers
 
         public InfoController(ICurrencyInfoBusiness _ICurrencyInfoBusiness)
         {
-            ICurrencyInfoBusiness = _ICurrencyInfoBusiness;
+            ICurrencyInfoBusiness = _ICurrencyInfoBusiness; 
         }
         [HttpGet("AllCurrencies")]
         public async Task<ApiResponse> AllCurrencies()
